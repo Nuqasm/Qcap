@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-pqc = ["oqs-python>=0.10.0"]
+pqc = ["liboqs-python>=0.14.1"]
 hf = ["huggingface_hub>=0.20.0", "transformers>=4.40.0"]
 dev = ["pytest>=8.0"]
 

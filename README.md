@@ -100,7 +100,7 @@ A `.qcap` is a ZIP containing three files:
 
 Signing is pluggable, and the CLI always prints which algorithm ran so nothing is ambiguous:
 
-- **ML-DSA-87** (FIPS 204, CNSA 2.0) via `liboqs` / `oqs-python` — the default when available (`pip install -e ".[pqc]"`).
+- **ML-DSA-87** (FIPS 204, CNSA 2.0) via `liboqs` / `liboqs-python` — the default when available (`pip install -e ".[pqc]"`).
 - **Ed25519** (stdlib) — a zero-dependency fallback so the demo runs green on any machine, including ones where `liboqs` won't build.
 
 ```bash

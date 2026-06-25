@@ -38,10 +38,10 @@ class Algorithm:
         try:
             import oqs
         except ImportError as exc:
-            raise RuntimeError(f"{self.name} requires oqs-python (pip install qcap[pqc])") from exc
+            raise RuntimeError(f"{self.name} requires liboqs-python (pip install qcap[pqc])") from exc
 
         with oqs.Signature(self.name) as signer:
-            public_key, private_key = signer.generate_keypair()
+            public_key, private_key = _pqc_generate_keypair(signer)
             return KeyPair(private_key=private_key, public_key_b64=_b64(public_key))
 
     def sign(self, private_key: bytes, message: bytes) -> str:
@@ -51,8 +51,7 @@ class Algorithm:
 
         import oqs
 
-        with oqs.Signature(self.name) as signer:
-            return _b64(signer.sign(message, private_key))
+        return _b64(_pqc_sign(self.name, private_key, message))
 
     def verify(self, public_key_b64: str, message: bytes, signature_b64: str) -> bool:
         public_key = _unb64(public_key_b64)
@@ -69,6 +68,26 @@ class Algorithm:
 
         with oqs.Signature(self.name) as signer:
             return signer.verify(message, signature, public_key)
+
+
+def _pqc_generate_keypair(signer: object) -> tuple[bytes, bytes]:
+    """Support liboqs-python (returns public key only) and legacy oqs-python (tuple)."""
+    result = signer.generate_keypair()
+    if isinstance(result, tuple):
+        public_key, private_key = result
+        return public_key, private_key
+    return result, signer.export_secret_key()
+
+
+def _pqc_sign(algorithm: str, private_key: bytes, message: bytes) -> bytes:
+    import oqs
+
+    try:
+        with oqs.Signature(algorithm, secret_key=private_key) as signer:
+            return signer.sign(message)
+    except TypeError:
+        with oqs.Signature(algorithm) as signer:
+            return signer.sign(message, private_key)
 
 
 def _b64(data: bytes) -> str:
