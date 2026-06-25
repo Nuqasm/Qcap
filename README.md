@@ -1,6 +1,6 @@
 # qcap
 
-**Verifiable execution provenance and chain of custody for AI — open, offline, tamper-evident.**
+**Verifiable execution provenance and chain of custody for AI agents and models — open, offline, tamper-evident.**
 
 [![CI](https://github.com/Nuqasm/Qcap/actions/workflows/ci.yml/badge.svg)](https://github.com/Nuqasm/Qcap/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) [![PQC](https://img.shields.io/badge/signatures-ML--DSA--87-7b3fe4)](#cryptography)
 
