@@ -1,0 +1,3 @@
+# Contributing
+
+Contributions are welcome under the Apache-2.0 license; by opening a pull request you agree your changes are licensed on those terms. The one hard rule is that `SPEC.md` and the reference implementation are a matched pair: if you change capsule structure, canonicalization, hashing, signing, or verification, update both in the same PR, and add a fixture under `tests/` — a passing capsule for new valid behavior, a `tamper`-marked one for anything verification must reject. Run `pytest` and `bash demo/demo.sh` before submitting; both must be green, because a verifier that ever accepts a modified capsule is a correctness bug, not a style issue. For substantial format changes, open an issue first so we can keep the spec coherent rather than retrofit it.

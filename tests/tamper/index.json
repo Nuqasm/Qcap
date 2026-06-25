@@ -1,0 +1,24 @@
+{
+  "fixtures": [
+    {
+      "file": "valid.qcap",
+      "tamper": false,
+      "note": "valid capsule with referenced weights"
+    },
+    {
+      "file": "tamper-append-byte.qcap",
+      "tamper": true,
+      "note": "single trailing byte appended"
+    },
+    {
+      "file": "tamper-payload.qcap",
+      "tamper": true,
+      "note": "embedded payload bytes modified"
+    },
+    {
+      "file": "tamper-record.qcap",
+      "tamper": true,
+      "note": "audit record modified after signing"
+    }
+  ]
+}

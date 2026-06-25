@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+
+# Test and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Local qcap outputs (keep committed conformance fixtures)
+*.qcap
+!tests/tamper/*.qcap
+qcap.ledger.jsonl
+
+# Secrets and credentials — never commit
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

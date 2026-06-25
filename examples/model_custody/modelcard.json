@@ -1,0 +1,28 @@
+{
+  "model_id": "acme/llama-3-8b-support-ft",
+  "base_model": "meta-llama/Llama-3-8B",
+  "task": "customer-support-classification",
+  "license": "llama-3-community",
+  "created": "2026-06-25T13:40:00Z",
+  "training_data_manifest": {
+    "hash": "sha256:77af9c1b0e4d2a6f8b3c5d7e9a1b2c3d4e5f60718293a4b5c6d7e8f9a0b1c2d3e",
+    "description": "12,480 de-identified support tickets, English, 2024-2025",
+    "source": "internal-zendesk-export-v3"
+  },
+  "fine_tunes": [
+    {
+      "step": "lora-r16",
+      "hash": "sha256:90b2e1c4a7d3f0598261b4e7c0a3d6f9285174b0e3c6a9f2d5081b4e7c0a3d6f9",
+      "epochs": 3,
+      "trainer": "alice"
+    }
+  ],
+  "safety_filters": [
+    "pii-redactor@2.1",
+    "toxicity-classifier@1.4"
+  ],
+  "evaluation": {
+    "accuracy": 0.91,
+    "eval_set_hash": "sha256:1c0d8a4b9e2f7c5301a6d4b8e2f7c5301a6d4b8e2f7c5301a6d4b8e2f7c5301a6"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "subject_type": "inference",
+  "model_id": "acme/llama-3-8b-support-ft",
+  "model_hash": "sha256:4ab1e7c0a3d6f9285174b0e3c6a9f2d5081b4e7c0a3d6f990b2e1c4a7d3f05982",
+  "code": {
+    "entrypoint": "serve.py:classify",
+    "code_hash": "sha256:5be2f8d1b4e7c0a3d6f9285174b0e3c6a9f2d5081b4e7c0a3d6f990b2e1c4a7d3",
+    "runtime": "vllm@0.6.2"
+  },
+  "request": {
+    "inputs_digest": "sha256:6cf3091e2a5d8b4f7c0a3d6f9285174b0e3c6a9f2d5081b4e7c0a3d6f990b2e1c",
+    "received": "2026-06-25T14:01:58Z"
+  },
+  "response": {
+    "outputs_digest": "sha256:7d041a2f3b6e9c5081b4e7c0a3d6f9285174b0e3c6a9f2d5081b4e7c0a3d6f990",
+    "label": "billing-issue",
+    "confidence": 0.94
+  },
+  "authorization": {
+    "scope": "classify-only",
+    "granted_by": "support-router",
+    "denied": ["pii-extraction", "external-tool-calls"]
+  }
+}

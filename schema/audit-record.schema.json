@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qcap.dev/schema/audit-record.schema.json",
+  "title": "qcap audit record",
+  "type": "object",
+  "required": [
+    "qcap_version",
+    "subject_type",
+    "signer",
+    "timestamp",
+    "environment",
+    "subject"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "qcap_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "subject_type": {
+      "type": "string",
+      "enum": ["model", "inference", "agent_action", "quantum_circuit"]
+    },
+    "signer": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "display": { "type": "string" }
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "environment": {
+      "type": "object",
+      "required": ["runtime", "host", "backend"],
+      "additionalProperties": true,
+      "properties": {
+        "runtime": { "type": "string" },
+        "host": { "type": "string" },
+        "backend": { "type": ["string", "null"] }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "required": ["manifest_hash"],
+      "additionalProperties": true,
+      "properties": {
+        "manifest_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "lineage": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "hardware_attestation": {
+      "type": ["object", "null"]
+    }
+  }
+}
