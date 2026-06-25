@@ -2,7 +2,7 @@
 
 **Verifiable execution provenance and chain of custody for AI — open, offline, tamper-evident.**
 
-[![CI](https://github.com/nuqasm/qcap/actions/workflows/ci.yml/badge.svg)](https://github.com/nuqasm/qcap/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) [![PQC](https://img.shields.io/badge/signatures-ML--DSA--87-7b3fe4)](#cryptography)
+[![CI](https://github.com/Nuqasm/Qcap/actions/workflows/ci.yml/badge.svg)](https://github.com/Nuqasm/Qcap/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE) [![PQC](https://img.shields.io/badge/signatures-ML--DSA--87-7b3fe4)](#cryptography)
 
 A `.qcap` is a signed, tamper-evident receipt that proves *which model and code ran, on what hardware, under whose authorization, and what it produced.* Anyone can produce one and verify it **offline, with no account and no service in the loop.** This repository is the open trust-bearing core: the capsule format, the verifier, and the audit-record schema.
 
@@ -51,7 +51,7 @@ pip install -e .
 bash demo/demo.sh
 ```
 
-Or run it in your browser with zero install: **[Open in Colab](https://colab.research.google.com/github/nuqasm/qcap/blob/main/demo/colab.ipynb)**.
+Or run it in your browser with zero install: **[Open in Colab](https://colab.research.google.com/github/Nuqasm/Qcap/blob/main/demo/colab.ipynb)**.
 
 You should see this:
 
@@ -75,6 +75,12 @@ $ qcap ledger add llama-ft.qcap && qcap ledger verify
 ```
 
 The last two commands are the point: change one byte and verification fails. That is the whole tamper-evidence guarantee, and you just ran it yourself.
+
+> **Signer in the demo:** by default the demo uses **ML-DSA-87** (FIPS 204, CNSA 2.0)
+> when `liboqs` is present (`pip install -e ".[pqc]"`). On environments without it —
+> including a bare Colab runtime — it falls back to **Ed25519** and prints which
+> algorithm ran. The format, verification, and tamper-evidence are identical either way;
+> only the signature primitive changes.
 
 ---
 
